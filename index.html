@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>SpeedTest Pro | Advanced Internet Speed Test</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wave-bg"></div>
+    <!-- <div class="network-bg"></div> -->
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                ⚡ SpeedTest Pro
+            </div>
+            <div class="badge">Accurate · Real-time · Global</div>
+        </div>
+
+        <!-- Speed metrics - 3 cards -->
+        <div class="speed-panel">
+            <div class="metric-card">
+                <div class="metric-label">PING</div>
+                <div class="metric-value" id="pingValue">--</div>
+                <div class="metric-unit">ms</div>
+                <div class="sub-metric">latency</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">DOWNLOAD</div>
+                <div class="metric-value" id="downloadValue">--</div>
+                <div class="metric-unit">Mbps</div>
+                <div class="sub-metric" id="downloadSub">↓ bandwidth</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">UPLOAD</div>
+                <div class="metric-value" id="uploadValue">--</div>
+                <div class="metric-unit">Mbps</div>
+                <div class="sub-metric" id="uploadSub">↑ bandwidth</div>
+            </div>
+        </div>
+
+        <!-- Dual meters for Download & Upload -->
+        <div class="dual-meters">
+            <div class="meter-wrapper">
+                <div class="meter-label">
+                    <span class="meter-icon">📥</span> DOWNLOAD
+                </div>
+                <div class="radial-gauge" id="downloadGauge">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="downloadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#38bdf8" />
+                                <stop offset="100%" stop-color="#3b82f6" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="gauge-bg" cx="100" cy="100" r="85" transform="rotate(-90 100 100)" />
+                        <circle class="gauge-fill" id="downloadGaugeFill" cx="100" cy="100" r="85"
+                            transform="rotate(-90 100 100)" />
+                    </svg>
+                    <div class="gauge-center">
+                        <div class="gauge-speed" id="downloadGaugeSpeed">0</div>
+                        <div class="gauge-label">Mbps</div>
+                    </div>
+                </div>
+                <div class="meter-status" id="downloadStatus">Ready</div>
+            </div>
+
+            <div class="meter-wrapper">
+                <div class="meter-label">
+                    <span class="meter-icon">📤</span> UPLOAD
+                </div>
+                <div class="radial-gauge" id="uploadGauge">
+                    <svg width="100%" height="100%" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="uploadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#f59e0b" />
+                                <stop offset="100%" stop-color="#ef4444" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="gauge-bg" cx="100" cy="100" r="85" transform="rotate(-90 100 100)" />
+                        <circle class="gauge-fill" id="uploadGaugeFill" cx="100" cy="100" r="85"
+                            transform="rotate(-90 100 100)" />
+                    </svg>
+                    <div class="gauge-center">
+                        <div class="gauge-speed" id="uploadGaugeSpeed">0</div>
+                        <div class="gauge-label">Mbps</div>
+                    </div>
+                </div>
+                <div class="meter-status" id="uploadStatus">Ready</div>
+            </div>
+        </div>
+
+        <button class="test-btn" id="startTestBtn">
+            <span class="btn-icon">▶</span>
+            <span class="btn-text">START SPEED TEST</span>
+        </button>
+
+        <div class="info-bar">
+            <div class="info-item">🌍 IP Address: <span id="ipInfo" class="glow-text">--</span></div>
+            <div class="info-item">📍 ISP / Server: <span id="serverInfo" class="glow-text">Auto-selected</span></div>
+            <div class="info-item">📶 Connection: <span id="connType" class="glow-text">--</span></div>
+        </div>
+
+        <div class="footer">
+            Measures Ping, Download & Upload | Real-time dual meters
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

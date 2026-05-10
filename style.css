@@ -1,0 +1,471 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    sans-serif;
+  background: linear-gradient(145deg, #0b1120 0%, #111827 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.wave-bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(56,189,248,0.08)" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,224C672,224,768,192,864,181.3C960,171,1056,181,1152,197.3C1248,213,1344,235,1392,245.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>')
+    repeat-x;
+  background-size: cover;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+  animation: waveMove 20s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1440px;
+  }
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 4vh auto;
+  background: rgba(18, 25, 45, 0.75);
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  padding: 1.5rem 2rem 2rem;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+  overflow-y: auto;
+}
+
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: -0.5px;
+}
+
+.badge {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 40px;
+  padding: 0.2rem 1rem;
+  font-size: 0.7rem;
+  color: #7dd3fc;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.speed-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-card {
+  flex: 1;
+  min-width: 110px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 1.5rem;
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: "JetBrains Mono", monospace;
+  color: #f0f9ff;
+  line-height: 1.2;
+  margin: 0.3rem 0;
+}
+
+.metric-unit {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.sub-metric {
+  font-size: 0.65rem;
+  color: #5ee0fa;
+  margin-top: 4px;
+}
+
+/* Dual Meters */
+.dual-meters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.meter-wrapper {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 1.8rem;
+  padding: 1.2rem 0.8rem;
+  transition: all 0.3s;
+}
+
+.meter-wrapper.testing {
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.meter-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.meter-icon {
+  font-size: 1rem;
+}
+
+.radial-gauge {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: #1e293b;
+  stroke-width: 10;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 534.07;
+  stroke-dashoffset: 534.07;
+  transition: stroke-dashoffset 0.3s ease-out;
+}
+
+#downloadGaugeFill {
+  stroke: url(#downloadGrad);
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+#uploadGaugeFill {
+  stroke: url(#uploadGrad);
+  filter: drop-shadow(0 0 8px #f59e0b);
+}
+
+.gauge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.gauge-speed {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: "JetBrains Mono", monospace;
+  color: white;
+}
+
+.gauge-label {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.meter-status {
+  font-size: 0.7rem;
+  color: #5ee0fa;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Button */
+.test-btn {
+  background: linear-gradient(105deg, #3b82f6, #8b5cf6);
+  border: none;
+  padding: 0.9rem 2rem;
+  width: 100%;
+  border-radius: 3rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.test-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px -8px rgba(59, 130, 246, 0.6);
+}
+
+.test-btn:active {
+  transform: scale(0.98);
+}
+
+.test-btn.loading {
+  background: linear-gradient(105deg, #475569, #334155);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.btn-icon {
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.test-btn:hover .btn-icon {
+  transform: translateX(3px);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  gap: 6px;
+  color: #cbd5e6;
+}
+
+.glow-text {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.65rem;
+  color: #4b5563;
+  margin-top: 1rem;
+}
+
+/* Animation for testing */
+@keyframes gaugePulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.meter-wrapper.testing .gauge-fill {
+  animation: gaugePulse 1s infinite;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .container {
+    margin: 3vh auto;
+    padding: 1rem 1.2rem;
+  }
+
+  .dual-meters {
+    gap: 1rem;
+  }
+
+  .radial-gauge {
+    width: 140px;
+    height: 140px;
+  }
+
+  .gauge-speed {
+    font-size: 1.3rem;
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+  }
+
+  .meter-wrapper {
+    min-width: 150px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .dual-meters {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .meter-wrapper {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .radial-gauge {
+    width: 160px;
+    height: 160px;
+  }
+
+  .container {
+    margin: 2vh auto;
+    padding: 1rem;
+  }
+}
+
+@media (max-height: 750px) {
+  .container {
+    margin: 2vh auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .speed-panel {
+    margin-bottom: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .dual-meters {
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+
+  .radial-gauge {
+    width: 130px;
+    height: 130px;
+  }
+
+  .gauge-speed {
+    font-size: 1.2rem;
+  }
+
+  .test-btn {
+    margin: 0.8rem 0;
+    padding: 0.6rem 1.5rem;
+  }
+}
