@@ -61,12 +61,7 @@ All tests run sequentially and the UI updates in real time.
    ```
 
 2. **Open the application**  
-   - Simply open `index.html` in your browser, **or**  
-   - Serve it locally:
-     ```bash
-     python3 -m http.server 8000
-     ```
-     Then visit `http://localhost:8000`
+   - Simply open `index.html` in your browser,
 
 3. **Start testing** – Click the **START SPEED TEST** button.
 
@@ -142,4 +137,4 @@ Contributions are welcome! Please open an [issue](https://github.com/NazmulIslam
 
 ---
 
-**Built with ⚡ by [Nazmul Islam](https://github.com/NazmulIslam95)**
+**Built with ⚡ by [Nazmul Islam](www.nazmulislam.info.bd)**
